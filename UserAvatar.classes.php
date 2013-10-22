@@ -23,19 +23,31 @@ class UserAvatar {
 		$title = $context->getTitle();
 		
 		// https://www.mediawiki.org/wiki/Manual:Title.php
-		$titletext = $title->getText();
+		$titleText = $title->getText();
 		
 		// Namespaces https://www.mediawiki.org/wiki/Help:Namespace
 		if ( $title->getNamespace() == NS_USER ) {
 			
 			# User class from name
 			#https://doc.wikimedia.org/mediawiki-core/master/php/html/classUser.html#ae4fdc63272b943d3b74fabeee106cb9b
-			$user = User::newFromName( $titletext );
+			$user = User::newFromName( $titleText );
 			
 			$file = self::getFilefromUser( $user );
 			
 			// Since output is HTML we put URL directly
-			$out->prependHTML( "<div class='useravatar-profile'><img src='".$file->getUrl()."' alt='".$user->getName()."' data-username='".$user->getName()."'><p>".$titletext."</p></div>" );
+			$out->prependHTML(
+				"<div class='useravatar-profile'>" .
+				Html::element(
+					'img',
+					array(
+						'src' => $file->getUrl(),
+						'alt' => $user->getName(),
+						'data-username' => $user->getName(),
+					)
+				) .
+				'<p>' . htmlspecialchars( $titleText ) . '</p>' .
+				"</div>"
+			);
 		}
 		
 		
@@ -53,7 +65,7 @@ class UserAvatar {
 	public static function onSkinAfterContent( &$data, $skin ) {
 
 		$title = $skin->getTitle();
-		
+
 		// Get Last revision
 		# https://doc.wikimedia.org/mediawiki-core/master/php/html/classRevision.html#a510568f576b3b3ab6e64abcbde5fd48e
 		$last_revision = Revision::newFromTitle( $title );
