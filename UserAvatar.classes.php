@@ -53,7 +53,6 @@ class UserAvatar {
 	public static function onSkinAfterContent( &$data, $skin ) {
 
 		$title = $skin->getTitle();
-		$titletext = $title->getText();
 		
 		// Get Last revision
 		# https://doc.wikimedia.org/mediawiki-core/master/php/html/classRevision.html#a510568f576b3b3ab6e64abcbde5fd48e
