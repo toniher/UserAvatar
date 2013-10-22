@@ -16,7 +16,7 @@ $wgExtensionCredits['parserhook'][] = array(
 
 #http://www.mediawiki.org/wiki/Manual:$wgResourceModules
 $wgResourceModules['ext.UserAvatar'] = array(
-	'localBasePath' => dirname( __FILE__ ),
+	'localBasePath' => __DIR__,
 	'scripts' => array( 'js/UserAvatar.js' ),
 	'styles' => array( 'css/UserAvatar.css' ),
 	'remoteExtPath' => 'UserAvatar'
@@ -24,13 +24,13 @@ $wgResourceModules['ext.UserAvatar'] = array(
 
 /** LOADING OF CLASSES **/
 // https://www.mediawiki.org/wiki/Manual:$wgAutoloadClasses
-$wgAutoloadClasses['UserAvatar'] = dirname( __FILE__ ) . '/UserAvatar.classes.php';
+$wgAutoloadClasses['UserAvatar'] = __DIR__ . '/UserAvatar.classes.php';
 
 
 
 /** STRINGS AND THEIR TRANSLATIONS **/
-#$wgExtensionMessagesFiles['UserAvatar'] = dirname( __FILE__ ) . '/UserAvatar.i18n.php';
-$wgExtensionMessagesFiles['UserAvatarMagic'] = dirname( __FILE__ ) . '/UserAvatar.i18n.magic.php';
+#$wgExtensionMessagesFiles['UserAvatar'] = __DIR__ . '/UserAvatar.i18n.php';
+$wgExtensionMessagesFiles['UserAvatarMagic'] = __DIR__ . '/UserAvatar.i18n.magic.php';
 
 /** HOOKS **/
 
