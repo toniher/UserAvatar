@@ -29,12 +29,19 @@ class UserAvatar {
 		if ( $title->getNamespace() == NS_USER ) {
 			
 			# User class from name
-			#https://doc.wikimedia.org/mediawiki-core/master/php/html/classUser.html#ae4fdc63272b943d3b74fabeee106cb9b
+			# https://doc.wikimedia.org/mediawiki-core/master/php/html/classUser.html#ae4fdc63272b943d3b74fabeee106cb9b
 			$user = User::newFromName( $titleText );
 			
 			$file = self::getFilefromUser( $user );
 			
 			// Since output is HTML we put URL directly
+			// $out->prependHTML( "<div class='useravatar-profile'><img src='".$file->getUrl()."' alt='".$user->getName()."' data-username='".$user->getName()."'><p>".$titleText."</p></div>" );
+
+			// We avoid potential Cross-site scripting XSS
+			// https://www.mediawiki.org/wiki/Security_for_developers
+			
+			# HTML Element Class
+			# https://doc.wikimedia.org/mediawiki-core/master/php/html/classHtml.html
 			$out->prependHTML(
 				"<div class='useravatar-profile'>" .
 				Html::element(
@@ -86,8 +93,23 @@ class UserAvatar {
 				$userlink = $userpage->getLocalURL();
 		
 				// HTML OUTPUT
-				$data.= "<div class='useravatar-lastedit'><span class='label'>Last edition by:</span> <a href='".$userlink."'><img src='".$file->getUrl()."' alt='".$user->getName()."'></a></div>";
-		
+				// Notice openElement and closeElement
+				$data.= "<div class='useravatar-lastedit'><span class='label'>Last edition by:</span>".
+					Html::openElement(
+						'a',
+						array(
+							'href' => $userlink,
+						)
+					) .
+						Html::element(
+							'img',
+							array(
+								'src' => $file->getUrl(),
+								'alt' => $user->getName(),
+							)
+						) .
+					Html::closeElement( 'a' ).
+					"</div>";
 			}
 		}
 		
@@ -187,7 +209,16 @@ class UserAvatar {
 				
 				if ( $file ) {
 					
-					$data = "<div class='useravatar-output'><img src='".$file->getUrl()."' width='".$width."' alt='".$user->getName()."'></div>";
+					$data = "<div class='useravatar-output'>" .
+						Html::element(
+						'img',
+						array(
+							'src' => $file->getUrl(),
+							'alt' => $user->getName(),
+							'width' => $width
+							)
+						) .
+					"</div>";
 					return $data;
 					
 				} else {
