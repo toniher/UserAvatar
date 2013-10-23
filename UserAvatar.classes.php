@@ -94,7 +94,8 @@ class UserAvatar {
 		
 				// HTML OUTPUT
 				// Notice openElement and closeElement
-				$data.= "<div class='useravatar-lastedit'><span class='label'>Last edition by:</span>".
+				# $data.= "<div class='useravatar-lastedit'><span class='label'>Last Edition by: </span>".
+				$data.= "<div class='useravatar-lastedit'><span class='label'>".wfMessage( "useravatar-lastedition" )->text()."</span>".
 					Html::openElement(
 						'a',
 						array(
@@ -222,12 +223,14 @@ class UserAvatar {
 					return $data;
 					
 				} else {
-					return "No file associated to the user!";
+					#return "No file associated to the user ".$user->getName();
+					return wfMessage( "useravatar-nofiletouser", $user->getName() )->parse(); 
 				}
 			}
 		}
 		
-		return ( "No existing user associated!" );
+		#return ( "No existing user ".$input." associated!" );
+		return ( wfMessage( "useravatar-noexistinguser", $input )->parse() );
 		
 	}
 	
@@ -263,14 +266,13 @@ class UserAvatar {
 					return $data;
 					
 				} else {
-					return "No file associated to the user!";
+					return wfMessage( "useravatar-nofiletouser", $user->getName() )->parse(); 
 				}
 			}
-
-		} else {
-			return "No existing user associated!";
-		}
+		} 
 		
+		#return ( "No existing user associated!" );
+		return wfMessage( "useravatar-noexistinguser-plain" )->text();
 		
 	}
 

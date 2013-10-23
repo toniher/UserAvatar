@@ -29,7 +29,7 @@ $wgAutoloadClasses['UserAvatar'] = __DIR__ . '/UserAvatar.classes.php';
 
 
 /** STRINGS AND THEIR TRANSLATIONS **/
-#$wgExtensionMessagesFiles['UserAvatar'] = __DIR__ . '/UserAvatar.i18n.php';
+$wgExtensionMessagesFiles['UserAvatar'] = __DIR__ . '/UserAvatar.i18n.php';
 $wgExtensionMessagesFiles['UserAvatarMagic'] = __DIR__ . '/UserAvatar.i18n.magic.php';
 
 /** HOOKS **/
