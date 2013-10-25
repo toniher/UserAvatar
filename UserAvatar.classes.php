@@ -201,7 +201,7 @@ class UserAvatar {
 		}
 		
 		if ( !empty( $input ) ) {
-			$username = trim( $input );
+			$username = $parser->recursiveTagParse( trim( $input ) );
 			$user = User::newFromName( $username );
 			
 			// If larger than 0, user exists
