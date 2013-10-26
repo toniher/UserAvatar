@@ -143,7 +143,7 @@ class UserAvatar {
 		// Create user
 		$user = User::newFromName( $username );
 		
-		if ( $user ) {
+		if ( $user && $user->getId() > 0 ) {
 			$timestamp = $user->getRegistration();
 			// We could format timestamp
 			return $timestamp;

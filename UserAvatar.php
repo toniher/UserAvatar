@@ -17,8 +17,8 @@ $wgExtensionCredits['parserhook'][] = array(
 #http://www.mediawiki.org/wiki/Manual:$wgResourceModules
 $wgResourceModules['ext.UserAvatar'] = array(
 	'localBasePath' => __DIR__,
-	'scripts' => array( 'js/UserAvatar.js' ),
-	'styles' => array( 'css/UserAvatar.css' ),
+	'scripts' => array( 'js/ext.UserAvatar.js' ),
+	'styles' => array( 'css/ext.UserAvatar.css' ),
 	'remoteExtPath' => 'UserAvatar'
 );
 
