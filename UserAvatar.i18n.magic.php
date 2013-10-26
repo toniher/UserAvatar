@@ -10,6 +10,6 @@ $magicWords['en'] = array(
 );
 
 $magicWords['ca'] = array(
-   'userprofile' => array( 0, 'perfilusuari', 'perfil' ),
+   'userprofile' => array( 0, 'perfilusuari', 'imatgeperfil' ),
 );
 
