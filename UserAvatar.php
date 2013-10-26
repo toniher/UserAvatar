@@ -75,15 +75,9 @@ function UserAvatarSetupParserFunction( $parser ) {
 	return true;
 }
 
-#http://www.mediawiki.org/wiki/API:Extensions
-
-
 
 #Ajax
 #https://www.mediawiki.org/wiki/Manual:$wgAjaxExportList
 $wgAjaxExportList[] = 'UserAvatar::getUserInfo';
 
 
-
-#DB create table
-#User ID -> Versus Yes/No

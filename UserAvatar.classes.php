@@ -18,9 +18,11 @@ class UserAvatar {
 		// Careful https://www.mediawiki.org/wiki/Manual:$wgAllowDisplayTitle
 		// $title = $out->getPageTitle();
 		
+		$title = $out->getTitle();
+		// Alternative
 		// https://www.mediawiki.org/wiki/RequestContext
-		$context = new RequestContext();
-		$title = $context->getTitle();
+		// $context = new RequestContext();
+		// $title = $context->getTitle();
 		
 		// https://www.mediawiki.org/wiki/Manual:Title.php
 		$titleText = $title->getText();
