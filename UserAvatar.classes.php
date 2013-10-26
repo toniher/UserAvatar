@@ -85,7 +85,7 @@ class UserAvatar {
 			// Let's get the file
 			$file = self::getFilefromUser( $user );
 	
-			if ( $file ) {	
+			if ( $file && $file->exists() ) {	
 				// Let's get the user page
 				$userpage = $user->getUserPage();
 		
@@ -175,10 +175,6 @@ class UserAvatar {
 		// Returns a file object
 		$file = wfFindFile( $filename );
 		
-		if ( ! $file ) {
-			return "";
-		}
-		
 		// https://doc.wikimedia.org/mediawiki-core/master/php/html/classFile.html
 		return $file;
 	
@@ -192,23 +188,29 @@ class UserAvatar {
 	 * @return string
 	*/
 	
+	
 	public static function printTag( $input, $args, $parser, $frame ) {
 	
 		$width = "50px";
 		
-		if ( isset( $args['width'] ) && is_numeric( $args['width'] ) ) {
-			$width = $args['width']."px";
+		if ( isset( $args['width'] ) ) {
+		
+			// Let's allow parsing -> Templates, etc.
+			$args['width'] = $parser->recursiveTagParse( $args['width'], $frame );
+			if ( is_numeric( $args['width'] ) ) {
+				$width = $args['width']."px";
+			}
 		}
 		
 		if ( !empty( $input ) ) {
-			$username = trim( $input );
+			$username = $parser->recursiveTagParse( trim( $input ) );
 			$user = User::newFromName( $username );
 			
 			// If larger than 0, user exists
-			if ( $user->getId() > 0 ) {
+			if ( $user && $user->getId() > 0 ) {
 				$file = self::getFilefromUser( $user );
 				
-				if ( $file ) {
+				if ( $file && $file->exists() ) {
 					
 					$data = "<div class='useravatar-output'>" .
 						Html::element(
@@ -256,10 +258,10 @@ class UserAvatar {
 			$user = User::newFromName( $username );
 			
 			// If larger than 0, user exists
-			if ( $user->getId() > 0 ) {
+			if ( $user && $user->getId() > 0 ) {
 				$file = self::getFilefromUser( $user );
 				
-				if ( $file ) {
+				if ( $file && $file->exists() ) {
 					
 					// We return wiki text -> We can control more: https://www.mediawiki.org/wiki/Manual:Parser_functions#Parser_interface
 					$data = "<div class='useravatar-output'>[[File:".$file->getName()."|".$width."px|link=User:".$user->getName()."]]</div>";

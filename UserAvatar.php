@@ -54,7 +54,7 @@ $wgHooks['ParserFirstCallInit'][] = 'UserAvatarSetupTagExtension';
 // Hook our callback function into the parser
 function UserAvatarSetupTagExtension( $parser ) {
 	// When the parser sees the <userprofile> tag, it executes 
-	// the wfSampleRender function (see below)
+	// the printTag function (see below)
 	$parser->setHook( 'userprofile', 'UserAvatar::printTag' );
 	// Always return true from this function. The return value does not denote
 	// success or otherwise have meaning - it just must always be true.
@@ -68,7 +68,7 @@ $wgHooks['ParserFirstCallInit'][] = 'UserAvatarSetupParserFunction';
 // Hook our callback function into the parser
 function UserAvatarSetupParserFunction( $parser ) {
 	// When the parser sees the {{#userprofile:}} function, it executes 
-	// the wfSampleRender function (see below)
+	// the printFunction function (see below)
 	$parser->setFunctionHook( 'userprofile', 'UserAvatar::printFunction', SFH_OBJECT_ARGS );
 	// Always return true from this function. The return value does not denote
 	// success or otherwise have meaning - it just must always be true.
