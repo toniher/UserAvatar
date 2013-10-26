@@ -1,3 +1,7 @@
 .useravatar-profile img { width: 80px; }
 .useravatar-lastedit img { width: 80px; }
 
+/** Extra exercise CSS below **/
+.useravatar-history { margin-left: 1em; display: inline-block; }
+.useravatar-history img { display: inline-block; }
+
