@@ -27,24 +27,11 @@ $wgResourceModules['ext.UserAvatar'] = array(
 $wgAutoloadClasses['UserAvatar'] = __DIR__ . '/UserAvatar.classes.php';
 
 
-
 /** STRINGS AND THEIR TRANSLATIONS **/
 $wgExtensionMessagesFiles['UserAvatar'] = __DIR__ . '/UserAvatar.i18n.php';
 $wgExtensionMessagesFiles['UserAvatarMagic'] = __DIR__ . '/UserAvatar.i18n.magic.php';
 
 /** HOOKS **/
-
-#http://www.mediawiki.org/wiki/Manual:Hooks/OutputPageBeforeHTML
-# We add this for loading CSS and JSS in every page by default
-$wgHooks['OutputPageBeforeHTML'][] = 'UserAvatar::onOutputPageBeforeHTML';
-
-#http://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
-# We put avatar only on User Page
-$wgHooks['OutputPageParserOutput'][] = 'UserAvatar::onOutputPageParserOutput';
-#http://www.mediawiki.org/wiki/Manual:Hooks/SkinAfterContent
-# We put avatar at the end of articles created by one guy.
-$wgHooks['SkinAfterContent'][] = 'UserAvatar::onSkinAfterContent';
-
 
 #http://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit
 #http://www.mediawiki.org/wiki/Manual:Tag_extensions
@@ -75,6 +62,17 @@ function UserAvatarSetupParserFunction( $parser ) {
 	return true;
 }
 
+#http://www.mediawiki.org/wiki/Manual:Hooks/SkinAfterContent
+# We put avatar at the end of articles created by one guy.
+$wgHooks['SkinAfterContent'][] = 'UserAvatar::onSkinAfterContent';
+
+#http://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
+# We put avatar only on User Page
+$wgHooks['OutputPageParserOutput'][] = 'UserAvatar::onOutputPageParserOutput';
+
+#http://www.mediawiki.org/wiki/Manual:Hooks/OutputPageBeforeHTML
+# We add this for loading CSS and JSS in every page by default
+$wgHooks['OutputPageBeforeHTML'][] = 'UserAvatar::onOutputPageBeforeHTML';
 
 #Ajax
 #https://www.mediawiki.org/wiki/Manual:$wgAjaxExportList
