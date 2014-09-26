@@ -25,7 +25,10 @@ $wgResourceModules['ext.UserAvatar'] = array(
 /** LOADING OF CLASSES **/
 // https://www.mediawiki.org/wiki/Manual:$wgAutoloadClasses
 $wgAutoloadClasses['UserAvatar'] = __DIR__ . '/UserAvatar.classes.php';
+$wgAutoloadClasses['ApiUserAvatar'] = dirname( __FILE__ ). '/UserAvatar.api.php';
 
+// API module
+$wgAPIModules['useravatar'] = 'ApiUserAvatar';
 
 /** STRINGS AND THEIR TRANSLATIONS **/
 $wgExtensionMessagesFiles['UserAvatar'] = __DIR__ . '/UserAvatar.i18n.php';
