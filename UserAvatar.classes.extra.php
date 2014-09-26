@@ -321,4 +321,34 @@ class UserAvatar {
 		return true;
 	}
 
+	/**
+	 * @param $username string
+	 * @return JSON
+	*/
+
+	public static function returnJSON( $username ) {
+	
+		$userObj = User::newFromName( $username );
+		
+		$json = array();
+		
+		if ( $userObj ) {
+			$file = self::getFilefromUser( $userObj );
+			$json["status"] = "OK";
+			
+			if ( $empty( $file ) ) {
+				$json["msg"] = "User has no associated avatar.";
+			} else {
+				$json["msg"] = "User does have an associated avatar.";
+			}
+		
+		} else {
+			$json["status"] = "OK";
+			$json["msg"] = "User does not exist.";
+		}
+		
+		return json_encode( $json );
+	
+	}
+
 }
