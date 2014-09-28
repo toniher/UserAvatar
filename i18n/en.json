@@ -1,3 +1,12 @@
 {
-
+	"@metadata": {
+		"authors": [
+			"Toniher"
+		]
+	},
+	"useravatar_desc": "Extension for rendering user avatars",
+	"useravatar-lastedition": "Last Edition by:",
+	"useravatar-noexistinguser-plain": "No existing user associated",
+	"useravatar-noexistinguser": "No existing user $1 associated",
+	"useravatar-nofiletouser": "User has no avatar file!"
 }

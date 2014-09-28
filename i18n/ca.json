@@ -1,3 +1,13 @@
 {
-
+	"@metadata": {
+		"authors": [
+			"Toniher"
+		]
+	},
+	"useravatar_desc": "Extensió per a dibuixar avatars d'usuari",
+	"useravatar-lastedition": "Darrera edició per:",
+	"useravatar-noexistinguser-plain": "No hi ha cap usuari associat",
+	"useravatar-noexistinguser": "No hi ha cap usuari $1 associat",
+	"useravatar-nofiletouser": "L'usuari no té fitxer d'avatar!"
 }
+

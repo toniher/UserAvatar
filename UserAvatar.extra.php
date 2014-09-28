@@ -34,6 +34,7 @@ call_user_func( function() {
 	$GLOBALS['wgAPIModules']['useravatar'] = 'ApiUserAvatar';
 
 	/** STRINGS AND THEIR TRANSLATIONS **/
+	$GLOBALS['wgMessagesDirs']['UserAvatar'] = __DIR__ . '/i18n';
 	$GLOBALS['wgExtensionMessagesFiles']['UserAvatar'] = __DIR__ . '/UserAvatar.i18n.php';
 	$GLOBALS['wgExtensionMessagesFiles']['UserAvatarMagic'] = __DIR__ . '/UserAvatar.i18n.magic.php';
 
