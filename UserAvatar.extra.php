@@ -45,7 +45,7 @@ call_user_func( function() {
 	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'UserAvatarSetupTagExtension';
 	
 	#http://www.mediawiki.org/wiki/Manual:Parser_functions
-	$GLOBALS['$wgHooks']['ParserFirstCallInit'][] = 'UserAvatarSetupParserFunction';
+	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'UserAvatarSetupParserFunction';
 	
 	#http://www.mediawiki.org/wiki/Manual:Hooks/SkinAfterContent
 	# We put avatar at the end of articles created by one guy.
