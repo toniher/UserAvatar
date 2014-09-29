@@ -4,7 +4,7 @@
 			"Toniher"
 		]
 	},
-	"useravatar_desc": "{{desc|name=Parser Functions|url=http://www.mediawiki.org/wiki/Extension:ParserFunctions}}",
+	"useravatar_desc": "{{desc|name=UserAvatar|url=https://github.com/toniher/UserAvatar}}",
 	"useravatar-lastedition": "Shows which user commited last edition in the page",
 	"useravatar-noexistinguser-plain": "Warns about no existing user is associated",
 	"useravatar-noexistinguser": "Warns about concrete user $1 is not associated",
