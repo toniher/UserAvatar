@@ -11,7 +11,7 @@ class ApiUserAvatar extends ApiBase {
 		$params = $this->extractRequestParams();
 
 		// For compatibility with GET method, we process JSON
-		$jsonresult = UserAvatar::returnJSON( $params['username'] );
+		$jsonresult = UserAvatar::apiOutput( $params['username'] );
 		$output = json_decode( $jsonresult );
 
 		$this->getResult()->addValue( null, $this->getModuleName(), array ( 'status' => $output->status, 'msg' => $output->msg ) );

@@ -326,24 +326,24 @@ class UserAvatar {
 	 * @return JSON
 	*/
 
-	public static function returnJSON( $username ) {
+	public static function apiOutput( $username ) {
 	
 		$userObj = User::newFromName( $username );
 		
 		$json = array();
+		$json["status"] = "NO";
 		
 		if ( $userObj ) {
 			$file = self::getFilefromUser( $userObj );
-			$json["status"] = "OK";
-			
-			if ( $empty( $file ) ) {
+
+			if ( empty( $file ) ) {
 				$json["msg"] = "User has no associated avatar.";
 			} else {
+				$json["status"] = "OK";
 				$json["msg"] = "User does have an associated avatar.";
 			}
 		
 		} else {
-			$json["status"] = "OK";
 			$json["msg"] = "User does not exist.";
 		}
 		
