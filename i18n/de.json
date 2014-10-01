@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fany"
+		]
+	},
+	"useravatar_desc": "Erweiterung zur Anzeige von Benutzer-Avataren",
+	"useravatar-lastedition": "Neueste Version von:",
+	"useravatar-noexistinguser-plain": "Es ist kein existierender Benutzer angegeben",
+	"useravatar-noexistinguser": "Der angegebene Benutzer $1 existiert nicht",
+	"useravatar-nofiletouser": "Zu diesem Benutzer gibt es keine Avatar-Datei!"
+}
